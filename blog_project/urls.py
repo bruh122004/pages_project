@@ -16,9 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('accounts.urls')),
     path('', include('blog.urls')),
-    path('accounts/', include('django.contrib.auth.urls'))
+    
 ]
+#the order matters here bacause Django reads this file top-to-bottom,
+#therefore when we request them /accounts/signup url, Django will 
+#look in auth, not find it , and tehn proceed to the accounts app.

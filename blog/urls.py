@@ -4,8 +4,11 @@ from .views import (
     BlogDetailView, 
     BlogCreateView, 
     BlogUpdateView,
-    BlogDeleteView
+    BlogDeleteView,
+    
+    
 )
+from django.contrib.auth import views
 urlpatterns = [
     path('post/<int:pk>/', BlogDetailView.as_view(), name='post_detail'),
     path('', BlogListView.as_view(), name='home'),
